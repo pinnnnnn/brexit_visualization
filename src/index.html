@@ -1,0 +1,218 @@
+<!--This file is part of The Brexit Demographic Visualization.
+
+    The Brexit Demographic Visualization is free software: you can
+    redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    The Brexit Demographic Visualization is distributed in the hope that it
+    will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with The Brexit Demographic Visualization. If not, see
+    <http://www.gnu.org/licenses/>. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BREXIT v. Demographic Data</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="magnific-popup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Credits to magnific-popup at http://dimsemenov.com/plugins/magnific-popup/ for the glossary and about pages, and their corresponding js and css files. -->
+    <script src="jquery.magnific-popup.js"></script>
+    <script src="crossfilter.min.js"></script>
+    <script type="text/javascript"
+            src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container-liquid">
+	<div class="navigation">
+	  <div class="row header align-items-center">
+	    <div class="col-lg-2 space">
+	      <!-- Used for spacing only -->
+	    </div>
+	    <div class="col-lg-8 title">
+	      <h1>Brexit Data</h1>
+	    </div>
+	    <div class="col-lg-1 center-block text-center align-self-center tab-help">
+	      <a href="#about" class="about-popup">About</a>
+	    </div>
+	    <div class="col-lg-1 center-block text-center align-self-center tab-help">
+	      <a href="#glossary" class="glossary-popup">Glossary</a>
+	    </div>
+	  </div>
+	  <div class="row controls">
+	    <div class="col-lg-3 center-block text-center vcenter">
+	      <h2>Census Demographic Category</h2>
+	    </div>
+	    <div class="col-lg-6 center-block text-center vcenter">
+	      <h2>Demographic Subcategory</h2>
+	    </div>
+	    <div class="col-lg-3 center-block text-center vcenter">
+	      <h2>Brexit Vote Breakdown</h2>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="col-lg-3 center-block text-center">
+	      <select id="demographic"></select>
+	    </div>
+	    <div class="col-lg-6 center-block text-center">
+	      <select id="subcategory"></select>
+	    </div>
+	    <div class="col-lg-3 center-block text-center">
+	      <select id="brexit">
+		<option value="Leave">Leave</option>
+		<option value="Remain" selected>Remain</option>
+	      </select>
+	    </div>
+	</div>
+      </div>
+	<div id="maps">
+	  <div class="col-lg-6" id="mapLeft"></div>
+          <div class="col-lg-6" id="mapRight">
+	    <div id="lad-statistics"></div>
+	  </div>
+	</div>
+	<script type="text/javascript" src="vis.js"></script>
+    </div>
+    <!-- #about popup -->
+    <div id="about" class="white-popup mfp-hide">
+      <div class="row">
+	<div class="col-lg-4">
+	  <img src="../data/images/alpaca_about.png" height="400" width="400">
+	</div>
+	<div class="col-lg-8">
+	  <div class="row about-head">
+	    <h2 style="text-decoration: underline">About this Visualization</h2>
+	  </div>
+	  <div class="row about-body">
+	    <p>
+	      On June 23, 2016 the United Kingdom voted on whether or not
+              to remain as a member state of the European Union. The
+              majority of the population voted to leave the EU. This
+              visualization attempts help explain why this was the case
+              through looking at a variety of demographic data. It is the
+              goal of this visualization to identify correlations between
+              demographic groups, such as ethnic groups, religious groups,
+              and even religious groups and how the districts with these
+              properties voted in reference to the EU referendum.
+	    </p>
+	    <p>
+	      A variety of features have been included for your visual pleasure. On the
+              left is a map of England proper which will display all of the
+              demographic information you could desire, and on the right is
+              another map of England proper displaying the voting breakdown
+              per district. You can select 13 different demographic
+              statistics and further narrow your search by selecting one of
+              many subcategories of your chosen demographic. We have
+              included the ability for you to hover your mouse cursor over
+              the districts on the left map to see the name of the district
+              along with the relevant percentage that that district is of
+              your chosen demographic. For more detailed information you
+              can click using your mouse cursor on a district to zoom in
+              and view a bar chart of all the statistics for that district
+              of the primary demographic, alongside the voting
+              breakdown.
+	    </p>
+	    <p>
+	      To effectively use this Brexit Demographic visualization, we will outline how one might extract information from the visualization. Say, for example, you would like to see the distribution of the population of Level 3 qualifications and up citizens and compare their distribution to the country's overall voting to leave the EU.
+	      <ol>
+		<li>
+		  Select the <i>Qualifications and Students</i> option under the <i>Census Demographic Category</i>.
+		</li>
+		<li>select the <i>Highest level of qualification: Level 3 qualifications</i> under <i>Demographic Subcategory</i>.
+		</li>
+		<li>
+		  Choosing the demographic subcategory will update the map on the left to accomodate for the chosen variable you would like to display, changing the color of the districts and legends.
+		</li>
+		<li>On the other side, select <i>Leave</i> from the <i>Brexit Vote Breakdown</i> selection to update the right hand map with the approrpiate colors.
+		</li>
+	      </ol>
+	      Now you have displayed the appropriate statistics to the visualization engine. To recover individual district statistics, simply hover over the chosen district with the mouse and a tooltip will appear, displaying the desired value. If you would like a more in-depth categorization of the a particular district, simply click on the desired district. The visualization will zoom-in to the desired district, and a quick bar chart summary and brexit comparison vote will appear to cover the right hand map. Clicking the district will remove the statistics and return the visualization to normal.
+	    </p>
+            <p>
+              This work is licensed under the GNU General Public License V3
+              which can be found <a href="GNU General Public License v3.0 - GNU Project - Free Software Foundation (FSF).html">here</a>.
+            </p>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <!-- #glossary popup -->
+    <div id="glossary" class="white-popup mfp-hide">
+      <div class="row">
+	<div class="col-lg-4">
+	  <img src="../data/images/alpaca_gloss.png" height="400" width="400" style="vertical-align: center">
+	</div>
+	<div class="col-lg-8">
+	  <div class="row gloss-head">
+	    <h2 style="text-decoration: underline">Glossary</h2>
+	    <p>The Glossary contains definitions of each of the demographic categories along with
+	    a definition of the brexit vote breakdown terminology.</p>
+	  </div>
+	  <div class="row" id="gloss-body">
+	    <h3>Demographic Categories</h3>
+	    <ul>
+	      <li><h4>Region of Birth</h4>
+		<p>The percentage of people born in a certain region in a local authority</p>
+	      </li>
+	      <li><h4>Ethnic Group</h4>
+		<p>The percentage of people from a certain ethnic group in a local authority</p>
+	      </li>
+	      <li><h4>Health and Provisions</h4>
+		<p>The percentage of people of a certain type of health situation in a local authority</p>
+	      </li>
+	      <li><h4>Hours Worked</h4>
+		<p>The average percentage of hours people worked weekly in a local authority</p>
+	      </li>
+	      <li><h4>Industry</h4>
+		<p>The percentage of people working in a certain industry in a local authority</p>
+	      </li>
+	      <li><h4>Living Arrangements</h4>
+		<p>The percentage of people living in a certain living arrangement(living in couple, not living in couple) in a local authority</p>
+	      </li>
+	      <li><h4>Main Language</h4>
+		<p>The percentage of the main language people speak in a local authority</p>
+	      </li>
+	      <li><h4>National Identity</h4>
+		<p>The percentage of people with a certain national identity in a local authority</p>
+	      </li>
+	      <li><h4>Qualification and Students</h4>
+		<p>The percentage of people in a certain qualification and employment status in a local authority</p>
+	      </li>
+	      <li><h4>Religion</h4>
+		<p>The percentage of people with a certain religion in a local authority</p>
+	      </li>
+	      <li><h4>Tenure</h4>
+		<p>The percentage of people in a certain tenure status (housing owned, rent etc.) in a local authority</p>
+	      </li>
+	      <li><h4>Resident Population</h4>
+		<p>The percentage of some demorgraphic information including gender, living status, population density and living area in a local authority</p>
+	      </li>
+	      <li><h4>Household Composition</h4>
+		<p>The percentage of household information including age and household types in a local authority</p>
+	      </li>
+	    </ul>
+	    <ul>
+	      <h3>Brexit Vote Breakdown</h3>
+	      <li><h4>Remain</h4>
+		<p>The percentage of people vote remain in a local authority</p>
+	      </li>
+	      <li><h4>Leave</h4>
+		<p>The percentage of people vote leave in a local authority</p>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </body>
+</html>

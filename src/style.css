@@ -1,0 +1,234 @@
+/*This file is part of The Brexit Demographic Visualization.
+
+    The Brexit Demographic Visualization is free software: you can
+    redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    The Brexit Demographic Visualization is distributed in the hope that it
+    will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with The Brexit Demographic Visualization. If not, see
+    <http://www.gnu.org/licenses/>.*/
+
+/* Reduce heading sizes. */
+h1 {
+    font-size: 2.0em;
+    text-align: center;
+}
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.0em; }
+
+/* Define body to be 100% in both dimensions. */
+body {
+    width: 100%;
+    height: 100%;
+}
+/*
+.glossary-popup {
+    fill: #000;
+    z-index: 1;
+}
+*/
+#glossary {
+    color: #000000;
+}
+
+/* Define the pop-up bubble when a district is hovered over. Have the */
+/* background to be white with an automatic width depending upon the */
+/* text size. */
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  min-width: 40%;
+  max-width: 99%;
+  margin: 20px auto;
+}
+
+/* Properties of top navbar. */
+.navigation {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 22%;
+    padding-bottom: 5px;
+    z-index: 50;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #abc;
+}
+
+/* Underlay the navbar with a unordered list structure but hide any*/
+/* attributes that would come by default. */
+.tab-help {
+    padding: 0 0 .35em 0;
+    color: #000;
+    top: 0px;
+    font-size: 18px;
+}
+
+.tab-help a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    float: center;
+}
+
+.tab-help a.about-popup::before {
+    content: 'About';
+    position: absolute;
+    display: block;
+    top: 0; right: 0; bottom: -1px; left: 0;
+    transform-origin: bottom;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-width: 1px 1px 1px 1px;
+    border-radius: .0em .0em .5em .5em;
+}
+
+.tab-help a.glossary-popup::before {
+    content: 'Glossary';
+    position: absolute;
+    display: block;
+    top: 0; right: 0; bottom: -1px; left: 0;
+    transform-origin: bottom;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-width: 1px 1px 1px 1px;
+    border-radius: .0em .0em .5em .5em;
+}
+
+/* Define margins for the two maps. */
+#maps {
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+/* Set a width for the subcategory 'select' bar. */
+#subcategory {
+    width: 80%;
+}
+
+.vcenter { /* From http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3, on May 7th, 2017 */
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+/* Add some space above the map. */
+#map svg {
+    margin-top: 3em;
+}
+
+/* Draw a small, black border around the left map. */
+#mapLeft {
+    border: 1px solid black;
+}
+
+/* Draw a small, black border around the right map but have it be*/
+/* less deep than the statistics to allow for removing and adding the*/
+/* map at will.*/
+#mapRight {
+    border: 1px solid black;
+    z-index: 1;
+}
+
+/* Display the two major SVGs in a block format with automatic margins. */
+#svgLeft {
+    display: block;
+    margin: auto;
+}
+#svgRight {
+    display: block;
+    margin: auto;
+}
+
+/* Define the attributes for the detailed statistics view when a district*/
+/* is clicked. Have the z-index be greater than the right most map to allow*/
+/* it to be displayed above the map.*/
+#lad-statistics {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background-color: #f5f5f5;
+    opacity: 0;
+    border: 2px solid #def;
+}
+
+/* Let all maps be 100% in both dimensions according to the user's resolution.*/
+#maps {
+    width: 100%;
+    height: 100%;
+}
+
+/* Define the default selection fill to be black for each district. */
+#lad {
+    fill: #000;
+}
+
+/* Color the district orange if the district is clicked on *if* it is*/
+/* not already colored.*/
+#lad .active {
+    fill: orange;
+}
+
+/* Define the district boundary to have gray lines of 1px in size. */
+.lad-boundary {
+    fill: none;
+    stroke: #aaa;
+    stroke-width: 1px;
+}
+
+/* Define the title for the legends that appear to be centered with*/
+/* black-ish font color.*/
+.legendTitle {
+    text-anchor: middle;
+    font-size: 2rem;
+    fill: #4F4F4F;
+    font-weight: 300;
+}
+
+/* Define the default bar color to be steel blue. The bars in question*/
+/* refer to those that are displayed when a district is clicked.*/
+.bar {
+  fill: steelblue;
+}
+
+/* Define the default bar color to be brown when the bar is hovered over. */
+.bar:hover {
+  fill: brown;
+}
+
+/* Define that the x-axis path for the bar chart to not appear. */
+.axis--x path {
+  display: none;
+}
+
+/* Define the stylistic elements for the tooltip that appears when*/
+/* district/bar is hovered over.*/
+.tooltip {/* Citation: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369, on May 6th 2017 */
+    position: absolute;			
+    text-align: center;			
+    min-width: 30px;
+    min-height: 28px;
+    padding: 2px;
+    background: lightsteelblue;
+    border: 1px solid #222;	
+    border-radius: 8px;			
+    pointer-events: none;			
+}
