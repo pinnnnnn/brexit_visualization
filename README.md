@@ -1,7 +1,8 @@
 # CSC-395-Final-Project
 
-##
-This is a visualization of Brexit breakdown, a project that was conducted as the final project for CSC-395 class in Grinnell college. This project is created by Zachary Susag, Logan Glaser and Peiyun Zhang
+## Introduction
+This is a visualization of Brexit breakdown, a project that was conducted as the final project for CSC-395 class in Grinnell college. This project is created by Zachary Susag, Logan Glaser and Peiyun Zhang.
+
 ## How to View the Visualization
 
  1. Clone the repository down using `git clone
