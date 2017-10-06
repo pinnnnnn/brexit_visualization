@@ -3,9 +3,9 @@
 ## How to View the Visualization
 
  1. Clone the repository down using `git clone
-    https://github.com/zsusag/CSC-395-Final-Project` if you do not use SSH,
+    https://github.com/pinnnnnn/brexit_visualization` if you do not use SSH,
     if you do, then you can use `git clone
-    ssh://git@github.com/zsusag/CSC-395-Final-Project`.
+    ssh://git@github.com/pinnnnnn/brexit_visualization`.
  2. Navigate to the cloned directory.
  3. Run an HTTP server in the cloned directory. We recommend doing this
  through executing the command `python3 -m http.server 8000`.
