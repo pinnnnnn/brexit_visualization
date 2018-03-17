@@ -1,4 +1,4 @@
-# CSC-395-Final-Project
+# A visualization of the demorgraphic breakdown of Brexit
 
 ## Introduction
 This is a visualization of Brexit breakdown, a project that was conducted as the final project for CSC-395 class in Grinnell college. This project is created by Zachary Susag, Logan Glaser and Peiyun Zhang.
